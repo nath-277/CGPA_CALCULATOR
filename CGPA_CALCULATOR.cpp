@@ -35,11 +35,14 @@ double calculateGPA(vector<Course> &courses) {
 int main() {
     vector<vector<Course>> allSemesters;
     int numSemesters;
+    char v;
      cout << "\t=======================\n";
      cout <<"\t  Made by ~BLACK-KING" << endl << "\t  FOR ALL YOU NERDS"<<endl;
-     cout << "\t=======================\n\n";
+     cout << "\t=======================\n";
     sleep(3);
-    cout << "Enter the number of semesters: ";
+    do 
+	{
+		cout << "\nEnter the number of semesters: ";
     cin >> numSemesters;
 
     for (int i = 0; i < numSemesters; ++i) {
@@ -63,7 +66,7 @@ int main() {
 
     for (int i = 0; i < allSemesters.size(); ++i) {
         double gpa = calculateGPA(allSemesters[i]);
-        cout << "GPA for semester " << i + 1 << ": " << gpa << endl;
+        cout << "\nGPA for semester " << i + 1 << ": " << gpa << endl;
         
         for (Course &course : allSemesters[i]) {
             totalUnits += course.courseUnit;
@@ -73,6 +76,14 @@ int main() {
 
     double cgpa = totalUnits ? cumulativeGradePoints / totalUnits : 0.0;
     cout << "Cumulative GPA (CGPA): " << cgpa << endl;
-
+    
+    cout <<"Do you want to exit the Program?(y/n)  -->";
+    cin >> v;
+	}
+	while (v == 'n' || v == 'N');
+    
+	cout<< "Program Exited!!!";
+	sleep(10);
+	
     return 0;
 }
